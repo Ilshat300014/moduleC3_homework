@@ -1,0 +1,41 @@
+function ElectricalAppliance(applianceType, power) {
+  this.power = power;
+  this.applianceType = applianceType;
+  this.isPlugged = false;
+}
+ElectricalAppliance.prototype.plugIn = function(){
+    console.log(`${this.applianceType} is plugged!`);
+    this.isPlugged = true;
+  }
+ElectricalAppliance.prototype.plugOut = function() {
+    console.log(`${this.applianceType} is unplugged!`);
+    this.isPlugged = false;
+  }
+ElectricalAppliance.prototype.getPower = function() {
+    if(this.isPlugged){
+      console.log('Power = ' + this.power);
+    } else {
+      console.log('Power = 0');
+    }
+  }
+function Kettle(brand, power){
+  this.power = power;
+  this.brand = brand;
+}
+Kettle.prototype = new ElectricalAppliance('kettle');
+
+function Iron(brand, power){
+  this.power = power;
+  this.brand = brand;
+  this.isHot = false;
+}
+Iron.prototype = new ElectricalAppliance('iron');
+Iron.prototype.ironCondition = function(){
+  if(this.isPlugged){
+    console.log('Be careful! Iron is hot!');
+    this.isHot = true;
+  } else {
+    console.log('Iron is cold!');
+    this.isHot = false;
+  }
+}

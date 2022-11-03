@@ -1,0 +1,39 @@
+class ElectricalAppliance{
+  constructor(name, power){
+    this.name = name;
+    this.power = power;
+    this.isPlugged = false;
+  }   
+  plugIn (){
+    console.log(this.name + " is plugged!");
+    this.isPlugged = true;
+  }
+  plugOut (){
+    console.log(this.name + " is unplugged!");
+    this.isPlugged = false;
+  }
+}
+
+class Iron extends ElectricalAppliance{
+  constructor(brand, name, power){
+    super(name, power);
+    this.brand = brand;
+    this.isHot = false;
+  }
+  getCondition() {
+    if (this.isPlugged) {
+      console.log('Be carefull! Iron is hot!')
+      this.isHot = true;
+    } else {
+      console.log('Iron is cold')
+      this.isHot = false;
+    }
+  }
+}
+
+class Kettle extends ElectricalAppliance{
+  constructor(brand, name, power, max_power, min_power){
+    super(name, power);
+    this.brand = brand;
+  }
+}
